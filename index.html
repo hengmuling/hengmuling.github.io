@@ -160,7 +160,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hengmuling.github.io/2021/05/29/tags-2/">
+    <link itemprop="mainEntityOfPage" href="https://hengmuling.github.io/2021/05/29/windowscudaSetup/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -174,7 +174,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/05/29/tags-2/" class="post-title-link" itemprop="url">tags</a>
+            <a href="/2021/05/29/windowscudaSetup/" class="post-title-link" itemprop="url">win10环境下 深度学习环境搭建要点记录</a>
         </h2>
 
         <div class="post-meta">
@@ -185,7 +185,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-29 11:06:58 / 修改时间：03:06:58" itemprop="dateCreated datePublished" datetime="2021-05-29T11:06:58Z">2021-05-29</time>
+              <time title="创建时间：2021-05-29 11:31:36 / 修改时间：16:23:48" itemprop="dateCreated datePublished" datetime="2021-05-29T11:31:36Z">2021-05-29</time>
             </span>
 
           
@@ -199,65 +199,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-      
-    </div>
+          <h3 id="1-环境"><a href="#1-环境" class="headerlink" title="1.环境"></a>1.环境</h3><p>navidia-gpu 信息： NVIDIA GeForce 940M ， 驱动程序版本：27.21.14.5749</p>
+<p>win10已经自动下载好驱动程序，所以接下来只要安装cuda 和 cuDNN. </p>
+<p>查看自己电脑GPU支持的cuda 版本号：<a target="_blank" rel="noopener" href="https://blog.csdn.net/XunCiy/article/details/89070315">https://blog.csdn.net/XunCiy/article/details/89070315</a>  </p>
+<p>vsvode 有python 插件后， 加入anaconda 的python 环境即可 ， （）</p>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hengmuling.github.io/2021/05/29/tags-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hengmuling的小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/29/tags-1/" class="post-title-link" itemprop="url">tags</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-29 10:43:41 / 修改时间：02:43:41" itemprop="dateCreated datePublished" datetime="2021-05-29T10:43:41Z">2021-05-29</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
       
     </div>
 
@@ -301,7 +247,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-29 10:22:01 / 修改时间：03:11:51" itemprop="dateCreated datePublished" datetime="2021-05-29T10:22:01Z">2021-05-29</time>
+              <time title="创建时间：2021-05-29 10:22:01 / 修改时间：16:25:50" itemprop="dateCreated datePublished" datetime="2021-05-29T10:22:01Z">2021-05-29</time>
             </span>
 
           
@@ -318,6 +264,9 @@
           <ol>
 <li>生成标签时，应该到source 文件夹下 执行命令 hexo new page </li>
 </ol>
+<p>开始 hexo generate ( 会修改配置，但不会覆盖内容)</p>
+<p>本地测试 hexo server</p>
+<p>部署到 GitHub ： hexo deploy </p>
 
       
     </div>
@@ -399,7 +348,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
