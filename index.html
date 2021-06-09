@@ -160,6 +160,141 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hengmuling.github.io/2021/06/03/Jvm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hengmuling的小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/03/Jvm/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-03 15:14:32 / 修改时间：16:18:57" itemprop="dateCreated datePublished" datetime="2021-06-03T15:14:32Z">2021-06-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>运行时数据区域：</p>
+<ol>
+<li>PC –&gt;当前线程所执行的字节码的行号指示器，字节码解释器通过改变这个计数器的值来选取下一条需要执行的字节码指令。每个线程都需要一个独立的程序计数器。–》线程私有</li>
+</ol>
+<p>2）Java 虚拟机栈： 线程私有，生命周期与线程相同。描述了是Java方法执行的线程内存模型：每个方法被执行的时候，Java虚拟机都会同步<strong>创建一个栈帧</strong>[1]（Stack Frame）用于存储局部变量表、操作数栈、动态连接、方法出口等信息。每一个方法被调用直至执行完毕的过程，就对应着一个栈帧在虚拟机栈中从入栈到出栈的过</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hengmuling.github.io/2021/06/01/Antman/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hengmuling的小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/01/Antman/" class="post-title-link" itemprop="url">Antman</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-31 19:49:02" itemprop="dateCreated datePublished" datetime="2021-05-31T19:49:02Z">2021-05-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-01 04:18:00" itemprop="dateModified" datetime="2021-06-01T04:18:00Z">2021-06-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>发现：在多租户环境下，GPU利用率低。—&gt; 原因：①：大多数DL训练任务，在其训练过程中，不能充分地利用GPU资源。 主要体现在：1）训练DL 模型需要混合地计算需求，其中一些很难并行化。2）当</p>
+<p>并行化时，90%的时间，用在网络上。 ②：集群调度中的预留策略导致大量的GPU空闲时间，因为DL Job不能使用部分的资源。比如，SGD是同步的算法，需要所有资源在线，以用于全局调度。导致调度器需要预留部分资源，直到任务需求满足要求为止。</p>
+<p>综上所述，可以发现如果在GPU集群上，运行多个Job，能够提高GPU的利用率–&gt;容纳更多的Job。然而这种方法，鲜有在生产环境中使用，这是因为除了提高GPU的利用率外，还需要保证有资源需求的Job的性能。将多个Job同时在一个GPU上运行，可能会有冲突，导致性能的显著下降。</p>
+<p>本文提出AntMan, 在保证公平性和resource-guaranteed job 的性能的同时，提高GPU集群的利用率—&gt;通过合作式的资源扩展来最小化 Job的interference.–&gt; <strong>该机制通过微改DL框架和cluster scheduler，来动态分配刚好的GPU内存和计算单元</strong>(这两个概念如何理解，需要学习GPU的知识)，任何的GPU空闲资源(内存和计算)，可以通过over-subscrpition jobs 进行利用（这个技术是超预定技术，时用户的需求暂时超过cluster的资源量—&gt;提高用户的满意度）。</p>
+<p>AntMan 相比于先前的调度器，提升了Job completion Time 和GPU 的内存和计算利用率。</p>
+<p>AntMan 设计由以下三个部分组成：①：DL frameworks的extension ② 合作式的使用这些primitive进行调度。③：集群中的调度策略 （ 点 从下到大）</p>
+<p>以下分别介绍这三种技术</p>
+<p>① DL 框架的动态伸缩–&gt; 目标：GPU 内存和计算单元的细粒度控制。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://hengmuling.github.io/2021/05/29/windowscudaSetup/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -348,9 +483,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>

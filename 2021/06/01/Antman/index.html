@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"hengmuling.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Hi">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://hengmuling.github.io/tags/index.html">
+  <meta name="description" content="发现：在多租户环境下，GPU利用率低。—&gt; 原因：①：大多数DL训练任务，在其训练过程中，不能充分地利用GPU资源。 主要体现在：1）训练DL 模型需要混合地计算需求，其中一些很难并行化。2）当 并行化时，90%的时间，用在网络上。 ②：集群调度中的预留策略导致大量的GPU空闲时间，因为DL Job不能使用部分的资源。比如，SGD是同步的算法，需要所有资源在线，以用于全局调度。导致调度器需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Antman">
+<meta property="og:url" content="https://hengmuling.github.io/2021/06/01/Antman/index.html">
 <meta property="og:site_name" content="hengmuling的小站">
-<meta property="og:description" content="Hi">
+<meta property="og:description" content="发现：在多租户环境下，GPU利用率低。—&gt; 原因：①：大多数DL训练任务，在其训练过程中，不能充分地利用GPU资源。 主要体现在：1）训练DL 模型需要混合地计算需求，其中一些很难并行化。2）当 并行化时，90%的时间，用在网络上。 ②：集群调度中的预留策略导致大量的GPU空闲时间，因为DL Job不能使用部分的资源。比如，SGD是同步的算法，需要所有资源在线，以用于全局调度。导致调度器需要">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-29T03:30:00.241Z">
-<meta property="article:modified_time" content="2021-05-29T03:30:00.241Z">
+<meta property="article:published_time" content="2021-05-31T19:49:02.000Z">
+<meta property="article:modified_time" content="2021-06-01T04:18:00.590Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="categories">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hengmuling.github.io/tags/">
+<link rel="canonical" href="https://hengmuling.github.io/2021/06/01/Antman/">
 
 
 <script id="page-configurations">
@@ -40,13 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>tags | hengmuling的小站
-</title>
+  <title>Antman | hengmuling的小站</title>
   
 
 
@@ -158,44 +158,99 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hengmuling.github.io/2021/06/01/Antman/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hengmuling的小站">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Antman
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-<div class="post-meta">
+              <time title="创建时间：2021-05-31 19:49:02" itemprop="dateCreated datePublished" datetime="2021-05-31T19:49:02Z">2021-05-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-01 04:18:00" itemprop="dateModified" datetime="2021-06-01T04:18:00Z">2021-06-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>发现：在多租户环境下，GPU利用率低。—&gt; 原因：①：大多数DL训练任务，在其训练过程中，不能充分地利用GPU资源。 主要体现在：1）训练DL 模型需要混合地计算需求，其中一些很难并行化。2）当</p>
+<p>并行化时，90%的时间，用在网络上。 ②：集群调度中的预留策略导致大量的GPU空闲时间，因为DL Job不能使用部分的资源。比如，SGD是同步的算法，需要所有资源在线，以用于全局调度。导致调度器需要预留部分资源，直到任务需求满足要求为止。</p>
+<p>综上所述，可以发现如果在GPU集群上，运行多个Job，能够提高GPU的利用率–&gt;容纳更多的Job。然而这种方法，鲜有在生产环境中使用，这是因为除了提高GPU的利用率外，还需要保证有资源需求的Job的性能。将多个Job同时在一个GPU上运行，可能会有冲突，导致性能的显著下降。</p>
+<p>本文提出AntMan, 在保证公平性和resource-guaranteed job 的性能的同时，提高GPU集群的利用率—&gt;通过合作式的资源扩展来最小化 Job的interference.–&gt; <strong>该机制通过微改DL框架和cluster scheduler，来动态分配刚好的GPU内存和计算单元</strong>(这两个概念如何理解，需要学习GPU的知识)，任何的GPU空闲资源(内存和计算)，可以通过over-subscrpition jobs 进行利用（这个技术是超预定技术，时用户的需求暂时超过cluster的资源量—&gt;提高用户的满意度）。</p>
+<p>AntMan 相比于先前的调度器，提升了Job completion Time 和GPU 的内存和计算利用率。</p>
+<p>AntMan 设计由以下三个部分组成：①：DL frameworks的extension ② 合作式的使用这些primitive进行调度。③：集群中的调度策略 （ 点 从下到大）</p>
+<p>以下分别介绍这三种技术</p>
+<p>① DL 框架的动态伸缩–&gt; 目标：GPU 内存和计算单元的细粒度控制。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/categories/" rel="tag"># categories</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/29/windowscudaSetup/" rel="prev" title="win10环境下 深度学习环境搭建要点记录">
+      <i class="fa fa-chevron-left"></i> win10环境下 深度学习环境搭建要点记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/03/Jvm/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <p>Hi</p>
-
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
