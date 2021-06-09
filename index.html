@@ -160,6 +160,76 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hengmuling.github.io/2021/06/09/Effective-C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hengmuling的小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/09/Effective-C/" class="post-title-link" itemprop="url">Effective_C++</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-09 00:00:00 / 修改时间：15:33:13" itemprop="dateCreated datePublished" datetime="2021-06-09T00:00:00Z">2021-06-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-item1-view-c-as-a-federation-of-language"><a href="#1-item1-view-c-as-a-federation-of-language" class="headerlink" title="1. item1: view c++ as a federation of language"></a>1. item1: view c++ as a federation of language</h4><p>   可以从 c , object-Oriented C++, Template C++, The STL，  这四个方面来理解C++这个语言， 分别对应四种不同的使用目的。</p>
+<h4 id="2-item2-prefer-consts-enums-and-inline-to-defines"><a href="#2-item2-prefer-consts-enums-and-inline-to-defines" class="headerlink" title="2. item2: prefer consts, enums, and inline to #defines"></a>2. item2: prefer consts, enums, and inline to #defines</h4><p>这条建议也可以理解成：更倾向于编译器，而非预处理器，这是因为#defines 可能不被包含在语言内。例如：</p>
+<p>#define asb_ratio 1.45 </p>
+<p>asb_ratio 这个符号可能永远不会被编译器观测到，在送到编译器里前，这个可能被预处理器删除。因此，这个变量可能不会进入符号表。解决方法是，使用const来代替macro:</p>
+<p>const double asb_ratio=1.45</p>
+<p>​    使用 #define 的另外一个目的是：定义宏，使它表现地像函数，而没有函数调用的开销。但是这个用法需要注意的东西很多，例如：</p>
+<p>​    #define CALL_WITH_MAX(a, b) f((a) &gt; (b) ? (a) : (b))</p>
+<p>int a = 5, b = 0;<br>CALL_WITH_MAX(++a, b); // a is incremented twice<br>CALL_WITH_MAX(++a, b+10); // a is incremented once</p>
+<p>   根据形参的不同， 对 a 有不同的操作。const ,enums, 和inlines 的引入，预处理器的需要有所下降，但没有完全消除，比如#ifdef/#ifndef 依然在控制编译处发挥这作用。以上宏定义可以使用模板进行更改：</p>
+<p>template<typename T> // because we don’t<br>inline void callWithMax(const T&amp; a, const T&amp; b) // know what T is, we<br>{  // pass by reference-to</p>
+<p>​    f(a &gt; b ? a : b); // const — see Item 20<br>}</p>
+<h4 id="3-item-3：Use-const-whenever-possible"><a href="#3-item-3：Use-const-whenever-possible" class="headerlink" title="3. item 3：Use const whenever possible"></a>3. item 3：Use const whenever possible</h4><p>​    const 关键字有多变灵活的使用目的。在类外，可以在 namspace 或 global 范围内定义常量，或者在文件，函数，块域修饰使用static 修饰的对象。在类内，可以对static 或者non-static 的数据成员进行修饰。对于指针，可以指定指针本身是否是const, 指针指向的对象是否是const.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://hengmuling.github.io/2021/06/03/Jvm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -483,7 +553,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
